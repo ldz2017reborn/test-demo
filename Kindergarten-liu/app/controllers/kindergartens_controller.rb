@@ -1,4 +1,6 @@
 class KindergartensController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+
   def index
     @kindergartens = Kindergarten.all
   end
@@ -17,15 +19,20 @@ class KindergartensController < ApplicationController
 
   def create
     @kindergarten = Kindergarten.new(kindergarten_params)
-    @kindergarten.save
+    if @kindergarten.save
       redirect_to kindergartens_path
+    else
+      render :new
+    end
   end
 
   def update
     @kindergarten = Kindergarten.find(params[:id])
-    @kindergarten.update(kindergarten_params)
-
-    redirect_to kindergartens_path, notice: "Update Success"
+    if @kindergarten.update(kindergarten_params)
+      redirect_to kindergartens_path, notice: "Update Success"
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -3,7 +3,13 @@
 
     <hr>
   <%= form_for @kindergarten do |f| %>
-
+      <% if @kindergarten.errors.any? %>
+      <ul>
+        <% @kindergarten.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <% end %>
   名称
   <%= f.text_field :title %>
   <br>
