@@ -2,27 +2,7 @@
   <h2>新增幼儿园<h2>
 
     <hr>
-  <%= form_for @kindergarten do |f| %>
-      <% if @kindergarten.errors.any? %>
-      <ul>
-        <% @kindergarten.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-      <% end %>
-  名称
-  <%= f.text_field :title %>
-  <br>
-  地点
-  <br>
-  <%= f.text_field :location %>
-  <br>
-  价格
-  <br>
-  <%= f.text_field :price %>
-  <br>
 
-  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-  <% end %>
+  <%= render "form" %>
 
 </div>
