@@ -10,7 +10,7 @@ class KindergartensController < ApplicationController
   def edit
     @kindergarten = Kindergarten.find(params[:id])
   end
-  
+
   def new
     @kindergarten = Kindergarten.new
   end
@@ -19,6 +19,13 @@ class KindergartensController < ApplicationController
     @kindergarten = Kindergarten.new(kindergarten_params)
     @kindergarten.save
       redirect_to kindergartens_path
+  end
+
+  def update
+    @kindergarten = Kindergarten.find(params[:id])
+    @kindergarten.update(kindergarten_params)
+
+    redirect_to kindergartens_path, notice: "Update Success"
   end
 
   private
