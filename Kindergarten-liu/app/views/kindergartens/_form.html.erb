@@ -1,20 +1,8 @@
-<%= form_for @kindergarten do |f| %>
-<div class="form-kindergarten">
-  <div class="form-kindergarten string optional">
-      <%= f.label "title", :class => "string optional control-label" %>
-      <%= f.text_field :title, :class => "string optional form-control" %>
-  </div>
-
-  <div class="form-kindergarten string optional">
-      <%= f.label "location", :class => "string optional control-label" %>
-      <%= f.text_area :location, :class => "string optional form-control" %>
-  </div>
-
-  <div class="form-kindergarten string optional">
-      <%= f.label "price", :class => "string optional control-label" %>
-      <%= f.text_area :price, :class => "string optional form-control" %>
-  </div>
-
-</div>
-<%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+<%= simple_form_for @kindergarten do |f| %>
+  <div class="form-kindergarten">
+     <%= f.input :title, input_html: { class: "form-control"} %>
+     <%= f.input :location, input_html: { class: "form-control"} %>
+     <%= f.input :price, input_html: { class: "form-control"} %>
+   </div>
+ <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>
