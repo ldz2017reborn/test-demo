@@ -28,6 +28,13 @@ class KindergartensController < ApplicationController
     redirect_to kindergartens_path, notice: "Update Success"
   end
 
+  def destroy
+    @kindergarten = Kindergarten.find(params[:id])
+    @kindergarten.destroy
+    flash[:alert] = "Kindergarten deleted"
+    redirect_to kindergartens_path
+  end
+
   private
 
   def kindergarten_params
