@@ -3,6 +3,10 @@ class KindergartensController < ApplicationController
     @kindergartens = Kindergarten.all
   end
 
+  def show
+    @kindergarten = Kindergarten.find(params[:id])
+  end
+
   def new
     @kindergarten = Kindergarten.new
   end
